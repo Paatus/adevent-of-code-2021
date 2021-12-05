@@ -1,5 +1,7 @@
 module Day4 where
 
+import Utils
+
 data Tile = Tile { marked:: Bool, value:: Int } deriving (Show)
 type Board = [Tile]
 
@@ -20,12 +22,6 @@ parseBoards (x:xs) currBoard acc = parseBoards xs (currBoard ++ (map (mkTile Fal
 
 hasTile :: Int -> Board -> Bool
 hasTile num board = (> 0) $ length $ filter (\t -> (== num) $ value t) board
-
-wordsWhen     :: (Char -> Bool) -> String -> [String]
-wordsWhen p s =  case dropWhile p s of
-                      "" -> []
-                      s' -> w : wordsWhen p s''
-                            where (w, s'') = break p s'
 
 fillBoard :: Int -> Board -> Board
 fillBoard n board =
@@ -85,7 +81,7 @@ solve = do
     fileContents <- readFile "inputs/day4.txt"
     let rows = lines fileContents
         numbers :: [Int]
-        numbers = map read $ wordsWhen (== ',') (rows !! 0)
+        numbers = map read $ splitBy ',' (rows !! 0)
         boards  = parseBoards (drop 2 rows) [] []
         p1 = solveP1 numbers boards
         p2 = solveP2 numbers boards
