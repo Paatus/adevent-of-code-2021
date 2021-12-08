@@ -35,9 +35,6 @@ doDay m = Map.fromList newList
                                 sevens = snd $ fromMaybe (7, 0) $ L.find (\(k,v) -> k == 7) mL
 
 
-createCountMap :: (Ord a) => [a] -> Map.Map a Int
-createCountMap = Map.fromListWith (+) . flip zip (repeat 1)
-
 solve :: IO ()
 solve = do
     fileContents <- readFile "inputs/day6.txt"
