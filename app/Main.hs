@@ -12,6 +12,7 @@ import Day9
 import Day10
 import Day11
 import Day12
+import Day13
 
 main :: IO ()
 main = do
@@ -29,5 +30,6 @@ main = do
         9 -> Day9.solve
         10 -> Day10.solve
         11 -> Day11.solve
-        12 -> Day11.solve
+        12 -> Day12.solve
+        13 -> Day13.solve
         _ -> putStrLn "That day is not yet solved :<"
