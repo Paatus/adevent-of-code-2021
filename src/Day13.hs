@@ -96,7 +96,7 @@ printMap m = printIt m 0 0 maxX maxY "" []
 
 solve :: IO ()
 solve = do
-    fileContents <- readFile "inputs/day17.txt"
+    fileContents <- readFile "inputs/day13.txt"
     let rows = lines fileContents
         p1 = solveP1 rows
         p2 = solveP2 rows
